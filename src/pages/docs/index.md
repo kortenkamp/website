@@ -32,11 +32,11 @@ There are three relevant parts to most CindyJS widgets:
 1. Reference the `Cindy.js` script in your HTML file,
    by adding the following line to the header of your file:
    ```html
-   <script type="text/javascript" src="http://cindyjs.org/dist/latest/Cindy.js"></script>
+   <script type="text/javascript" src="/dist/v0.8/Cindy.js"></script>
    ```
-   This adds a function called `createCindy` to the global scope.
+   This adds a function called `CindyJS` to the global scope.
 2. Invoke that function, providing an object with further content description.
-   See [the `createCindy` documentation](/ref/createCindy.html) for details.
+   See [the JavaScript API documentation](/ref/createCindy.html) for details.
    Usually you don't have to ensure that the document is fully loaded
    by the time you make that invocation;
    CindyJS will postpone initialization appropriately.
@@ -49,7 +49,9 @@ There are three relevant parts to most CindyJS widgets:
 
 ### Tutorials
 
-At this point there are no official tutorials for CindyJS.
+There is a [CindyGL-Tutorial](/docs/cindygltutorial/), that is also suitable for starting with CindyJS.
+
+At this point there are no further official tutorials for CindyJS.
 If you want to write one, please contact the development team.
 If you follow the route of exporting content from Cinderella, one of
 [Cinderella's tutorials](http://doc.cinderella.de/tiki-index.php?page=Introduction+to+the+Tutorials)

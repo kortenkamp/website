@@ -9,7 +9,9 @@
 {{else}}
     <title>CindyJS</title>
 {{/if}}
-    <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="icon" href="/assets/img/logo_small.png" type="image/png">
+    <link rel="stylesheet" href="{{ROOT}}/assets/css/app.css" />
+    <link rel="stylesheet" href="{{ROOT}}/dist/latest/CindyJS.css" />
 {{#each scripts}}
 {{{.}}}
 {{/each}}
@@ -17,14 +19,15 @@
   <body class="with-footer">
 
     <!-- Header -->
-    <header class="top-bar">
+    <header id="top-bar">
       <div>
-        <h1><a href="/">CindyJS</a></h1>
+        <h1><a href="/"><span style="font-weight:400">Cindy</span><span style="font-weight:700">JS</span><img alt="CindyJS logo" class="logo" src="/assets/img/logo_small.png"></a></h1>
         <nav>
           <ul id="topBarLinks">
-            <li><a href="/gallery/">Gallery</a></li>
+            <li><a href="/gallery/main/">Gallery</a></li>
             <li><a href="/docs/">Docs</a></li>
             <li><a href="/project/">Project</a></li>
+            <li><a href="https://github.com/CindyJS/CindyJS"><img src="/assets/img/octoicons-mark-github.svg" alt="GitHub" title="GitHub project" style="display:inline; position:relative; top:0.2ex; width:1.7ex;"></a></li>
           </ul>
         </nav>
       </div>
@@ -43,14 +46,25 @@
 
       <!-- Main part -->
       <main>
+{{#if galleries}}
+      <!-- navigation within gallery -->
+      <div class="gallerynav"><ul>
+        {{#each galleries}}
+          <li{{#if highlight}} class="highlight"{{/if}}><a href="/{{href}}">{{title}}</a></li>
+        {{/each}}
+        </ul>
+      </div>
+{{/if}}
+
 {{#if title}}
         <h1>{{title}}</h1>
 {{/if}}
+
 {{{body}}}
       </main>
     </div>
 
-    <footer>
+    <footer id="bottom-bar">
       <div>
         <div class="footer-item">
           <p class="footer-label">Made possible by:</p>
@@ -59,6 +73,7 @@
             <li><a href="http://discretization.de/">DFG SFB Transregio 109 DGD, Germany</a></li>
             <li><a href="http://mc2-project.eu/">M C Squared, 7th Framework Programme, EU</a></li>
           </ul>
+          <p class="footer-label"><a href="/imprint/">Legal notice and privacy policy</a></p>
         </div>
         <div class="footer-sep"><hr></div>
         <div class="footer-item">

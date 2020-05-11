@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd CindyJS
+make
+cd ../src/assets/img/thumbnail
+
+phantomjs cindyscreenshot.js ../../../../CindyJS/examples/
+for i in `find ../../../../CindyJS/examples/ -type d`
+do
+  phantomjs cindyscreenshot.js $i/*.html
+done

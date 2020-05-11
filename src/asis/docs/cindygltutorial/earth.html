@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://cindyjs.org/dist/snapshot/Cindy.js"></script>
+    <title>A spinning earth</title>
+  </head>
+
+  <body>
+    <div id="CSCanvas"></div>
+    <script id="csdraw" type="text/x-cindyscript">
+      R = [
+        [cos(seconds()), sin(seconds()), 0],
+        [-sin(seconds()), cos(seconds()), 0],
+        [0,0,1]
+      ];
+           
+      colorplot(
+        if(|#|<1,
+          s = (#.x, -re(sqrt(1-#*#)), #.y); //point on S^2 "behind" pixel
+          light = (max(0.1, s*[-.3,-1,0.1]));
+          s = R*s;
+          lon = arctan2([s.x, s.y]);
+          lat = re(arcsin(s.z));
+          light*imagergb((-pi, (-pi/2)), (pi, (-pi/2)), "earth", (lon, lat));
+          ,
+          [0,0,0]
+        );
+      )
+    </script>
+
+    <script type="text/javascript">
+    CindyJS({
+      scripts: "cs*",
+      autoplay: true,
+      ports: [{
+        id: "CSCanvas",
+        width: 500,
+        height: 500,
+        transform: [{
+          visibleRect: [-1.2, 1.2, 1.2, -1.2]
+        }]
+      }],
+      images: {"earth": "earth.jpg"}
+    });
+    </script>
+  </body>
+</html>
